@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'Rabbit And Foxes';
+  src: url(./fonts/RabbitsAndFoxes.ttf);
+}
+
+
 body {
   margin: 0;
 
@@ -26,4 +32,17 @@ code {
 
 .App *{
   flex-grow:0;
+}
+
+.violetalien{
+  background-color:#584998;
+}
+.greenbutton{
+  background-color:#00AC45;
+  color: white;
+  border: none;
+  padding:15px 30px;
+  border-radius: 25px;
+  font-family: 'Rabbit And Foxes';
+  font-size: 1.2em;
 }

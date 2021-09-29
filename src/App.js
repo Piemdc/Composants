@@ -1,11 +1,11 @@
 
-import './header.css';
-import './footer.css';
+import './header/header.css';
+import './footer/footer.css';
 import './home/home.css';
 import './normalize.css';
-import Header from './Header.js';
+import Header from './header/Header.js';
 import React from 'react';
-import Footer from './Footer';
+import Footer from './footer/Footer';
 import Home from './home/Home'
 
 

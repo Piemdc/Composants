@@ -1,0 +1,39 @@
+.article{
+    padding: 25% 0;
+    background-size: cover!important;
+    text-align: right;
+    z-index: 1000;
+}
+
+.blur{
+    background-color: rgba(0, 0, 0, 0.418);
+    padding: 5%;
+    backdrop-filter: blur(10px);
+
+}
+
+.articletitle, .articletext
+{
+    color: white!important;
+}
+
+.articletitle{
+    font-family: 'Century Gothic';
+    font-weight: 300;
+    font-size: 2em;
+    margin-bottom: 50px;
+}
+
+
+
+@media only screen and (min-width: 1024px) 
+
+{
+    .article
+    {
+        padding: 10% 0;
+    }
+    .blur{
+        padding: 10%
+    }
+}

@@ -1,8 +1,11 @@
-.violetalien{
-  background-color:#584998;
+
+
+@keyframes logoanim {
+  0% {transform: rotate(0);}
+  33% {transform: rotate(10deg);}
+  66% {transform: rotate(-10deg);}
+  100% {transform: rotate(0deg);}
 }
-
-
 
 header
 {
@@ -20,7 +23,16 @@ header
 
 .logo{
   width: 10%;
+  transition: linear;
 }
+
+.logo:hover{
+  animation-name: logoanim;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+
 
 .navUl
 {

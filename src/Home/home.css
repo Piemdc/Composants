@@ -7,33 +7,40 @@ main
 {
  display: flex!important;
  flex-direction: column;
+ background-image: url(../images/10046.jpg);
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-position:top;
+    background-size: 100%;
 }
 
 .rappel
 {
-    background-image: url(../images/10046.jpg);
-    background-repeat: no-repeat;
-    background-origin: content-box;
-    background-position:center;
-    background-size: 200%;
+    
     padding:0% 0 8% 0 ;
 }
 
 .rappel h1 
 {
     font-family: 'Rabbit And Foxes';
-    color: #584998;
     text-align: center;
-    font-size: 3em;
+    font-size: 5rem;
     font-weight: 300;
+    text-transform: uppercase;
     padding: 5%;
     margin: 0;
+    color: transparent;
+    background: #584998;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
 }
 
 .coming
 {
     background-color: white;
-    padding: 5% 5% 8% 5%;
+    padding: 8% 5% 5% 5%;
     width: 60%;
     margin: 0 auto;
     -webkit-box-shadow: 0px 8px 9px 0px rgba(0,0,0,0.38); 
@@ -43,7 +50,40 @@ main
 .coming h3 
 {
     font-family: 'Rabbit And Foxes';
+    font-size: 2em;
+    font-weight: 300;
+    margin: 0;
 }
+
+
+.more
+{
+    padding: 5% 0;
+    text-align: center;
+    margin: 0 auto;
+    color: #9f9f9f;
+    background-color: white;
+    width: 100%;
+    z-index: 1000;
+    
+}
+
+@media only screen and (max-width: 1024px) {
+
+    main{
+        background:none;
+    }
+    
+    .rappel
+    {
+        background-image: url(../images/10046.jpg);
+        background-repeat: no-repeat;
+        background-origin: content-box;
+        background-position:center;
+        background-size: 200%;
+    }
+}
+
 
 @media only screen and (min-width: 1024px) 
 
@@ -53,6 +93,7 @@ main
     {
         flex-direction: row;
         flex-wrap: wrap;
+        background-attachment: fixed;
     }
 
     .rappel
@@ -61,11 +102,49 @@ main
         width: 100%;
     }
 
+
     .coming
     {
         width: 25%;
         margin: auto 60%;
     }
+
+    .rappel
+    {
+        padding: 15% 5%;
+    }
+
+    .rappel h1
+    {
+        font-family: 'Rabbit And Foxes';
+        text-align: center;
+        font-size: 10em;
+        font-weight: 300;
+        text-transform: uppercase;
+
+        margin: 0 auto;
+        width: 30%;
+        color: transparent;
+        position: fixed;
+        background: #584998;
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        background-clip: text;
+        text-shadow: 0px 3px 3px rgba(255,255,255,0.5);
+        z-index: 0;
+    }
+
+    
+    .card{
+        background-color: white;
+        z-index: 2;
+        transform: translateY(-50px);
+        border-radius: 20px;
+        -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.1); 
+        box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.1);
+
+    }
+    
 }
 
 @media only screen and (min-width: 1700px) 
@@ -74,7 +153,8 @@ main
     .coming
     {
         width: 15%;
-        margin: auto 75%;
+        margin: auto 80%;
+        padding: 2%;
     }
 
 }
