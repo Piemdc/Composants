@@ -6,7 +6,7 @@ import './normalize.css';
 import Header from './Header.js';
 import React from 'react';
 import Footer from './Footer';
-import Home from './Home/Home'
+import Home from './home/Home'
 
 
 function App() {
