@@ -7,14 +7,16 @@ import Header from './header/Header.js';
 import React from 'react';
 import Footer from './footer/Footer';
 import Home from './home/Home'
+import Signinup from './connexion/log'
 
 
 function App() {
 
+
   return (
     <div className="App">
       <Header />
-      <Home />
+      <Signinup />
       <Footer />
     </div>
   );
