@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Rabbit And Foxes';
+    src: url(../fonts/RabbitsAndFoxes.ttf);
+  }
+
 .log{
     background-image: url(../images/fond-alien.jpg);
     background-repeat: no-repeat;
@@ -7,3 +12,103 @@
     width: 100%;
     min-height: 100vh;
 }
+
+
+  
+  .login
+  {
+    background-color: white;
+    width: 85%;
+    padding: 5% 0 10%;
+    height: auto;
+    margin: 40% auto;
+    border-radius: 25px;
+    -webkit-box-shadow: 0px 3px 8px 1px rgba(0,0,0,0.38); 
+  box-shadow: 0px 3px 8px 1px rgba(0,0,0,0.38);
+  }
+
+  .login h3{
+    font-family: 'Rabbit And Foxes';
+    color: #584998;
+    font-size: 3.5em;
+    text-align: center;
+    margin: 0;
+  }
+  .login form{
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+  }
+  
+  input{
+    margin: 10% 0 0;
+    padding: 4%;
+    border-radius: 10px;
+    border: solid 1px #584998;
+  }
+  
+  button{
+    margin-top:15%;
+    border: none;
+    background: none;
+  }
+
+  .formError{
+    color: red;
+    font-weight: 600;
+    font-style: italic;
+    margin-top: 2%;
+  }
+
+  .formOK{
+    color: green;
+    font-weight: 600;
+    font-style: italic;
+    margin-top: 2%;
+  }
+  
+  .fusee{
+  transform: rotate(-90deg) scale(2);
+  margin: 2% 0;
+  
+  }
+  
+  
+  
+  
+  @media all and (min-width: 480px) {
+      .login {
+        padding: 60px 0;
+      }
+    
+      .login form {
+        margin: 0 auto;
+        max-width: 320px;
+      }
+    }
+
+    @media all and (min-width: 1024px) {
+
+
+      .login {
+        margin-top: 20%;
+        width: 60%;
+      }
+    
+    }
+
+    
+    @media all and (min-width: 1440px) {
+
+
+      .login {
+        margin-top: 10%;
+        width: 25%;
+      }
+    
+    }
+    
+    

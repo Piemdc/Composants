@@ -1,52 +1,67 @@
 import React from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import fusee from '../../images/fusee.svg'
 
-export default class RegisterBox extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
+const RegisterBox = () => {
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+            pseudo: '',
+            nom: '',
+            password: '',
+            createdAt: new Date(),
+        },
+        validationSchema: Yup.object({
+            email: Yup.string().email('Adresse mail invalide').required('* obligatoire'),
+            pseudo: Yup.string().required('* obligatoire'),
+            nom: Yup.string(),
+            prenom: Yup.string(),
+            password: Yup.string()
 
-    submitRegister(e) { }
+                .min(8, 'Mot de passe trop court (8 mini)')
+                .required('* obligatoire'),
+            passwordConf: Yup.string()
+                .min(8, 'Mot de passe trop court (8 mini)')
+                .oneOf([Yup.ref('password'), null], 'Les mots de passes doivent être identiques')
+                .required('* obligatoire'),
 
-    render() {
-        return (
-            <div className="inner-container">
-                <div className="header">
-                    Register
-                </div>
-                <div className="box">
 
-                    <div className="input-group">
-                        <label htmlFor="username">Username</label>
-                        <input
-                            type="text"
-                            name="username"
-                            className="login-input"
-                            placeholder="Username" />
-                    </div>
+        }),
+        onSubmit: values => {
+            alert(JSON.stringify(values, null, 2));
+        },
+    });
+    return (
+        <div className="login">
+            <form onSubmit={formik.handleSubmit} >
+                <h3>Inscription</h3>
+                <input id="email" placeholder="Adresse email *" type="email" {...formik.getFieldProps('email')} />
+                {formik.touched.email && formik.errors.email ? <label className="formError">{formik.errors.email}</label> : null}
+                {formik.touched.email && !formik.errors.email ? <label className="formOK">Email valide</label> : null}
 
-                    <div className="input-group">
-                        <label htmlFor="email">Email</label>
-                        <input type="text" name="email" className="login-input" placeholder="Email" />
-                    </div>
+                <input id="pseudo" placeholder="Pseudo *" type="text" {...formik.getFieldProps('pseudo')} />
+                {formik.touched.pseudo && formik.errors.pseudo ? <label className="formError">{formik.errors.pseudo}</label> : null}
+                {formik.touched.pseudo && !formik.errors.pseudo ? <label className="formOK">Pseudo valide</label> : null}
 
-                    <div className="input-group">
-                        <label htmlFor="password">Password</label>
-                        <input
-                            type="password"
-                            name="password"
-                            className="login-input"
-                            placeholder="Password" />
-                    </div>
-                    <button
-                        type="button"
-                        className="login-btn"
-                        onClick={this
-                            .submitRegister
-                            .bind(this)}>Register</button>
-                </div>
-            </div>
-        );
-    }
-}
+                <input id="prenom" placeholder="Prenom" type="text" {...formik.getFieldProps('prenom')} />
+
+                <input id="nom" placeholder="Nom" type="text" {...formik.getFieldProps('nom')} />
+
+                <input id="password" placeholder="Mot de passe *" type="password" {...formik.getFieldProps('password')} />
+                {formik.touched.password && formik.errors.password ? <label className="formError">{formik.errors.password}</label> : null}
+
+                <input id="passwordConf" placeholder="Répetez le Mot de passe *" type="password" {...formik.getFieldProps('passwordConf')} />
+                {formik.touched.passwordConf && formik.errors.passwordConf ? <label className="formError">{formik.errors.passwordConf}</label> : null}
+                {formik.touched.passwordConf && !formik.errors.passwordConf ? <label className="formOK">Mot de passe OK !</label> : null}
+
+                <input id="nom" placeholder="Nom" type="hidden" {...formik.getFieldProps('createdAt')} />
+
+
+                <button type="submit"><img className="fusee" src={fusee} alt="#" /></button>
+            </form>
+        </div>
+    );
+};
+export default RegisterBox;
