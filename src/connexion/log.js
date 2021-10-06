@@ -1,6 +1,6 @@
-import fusee from '../images/fusee.svg'
+// import fusee from '../images/fusee.svg'
 import React from 'react';
-import LoginBox from '../../login/Login';
+// import LoginBox from './login/Login';
 import RegisterBox from './register/Register'
 import './log.css';
 

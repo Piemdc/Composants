@@ -5,13 +5,18 @@ import fusee from '../../images/fusee.svg'
 
 
 const RegisterBox = () => {
+    const requestOptions = {
+        method: 'post',
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/json' },
+    };
+
     const formik = useFormik({
         initialValues: {
             email: '',
             pseudo: '',
             nom: '',
-            password: '',
-            createdAt: new Date(),
+            password: ''
         },
         validationSchema: Yup.object({
             email: Yup.string().email('Adresse mail invalide').required('* obligatoire'),
@@ -27,15 +32,33 @@ const RegisterBox = () => {
                 .oneOf([Yup.ref('password'), null], 'Les mots de passes doivent être identiques')
                 .required('* obligatoire'),
 
-
+            // http://127.0.0.1:8000/api/signup
         }),
-        onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
-        },
-    });
+        onSubmit: async (values, { setSubmitting }) => {
+
+            const res = await fetch(`http://localhost:8000/api/signup`, {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                    body: JSON.stringify({ values })
+                }
+            }).then(response => response.json())
+                .then(responseJson => {
+                    console.log(responseJson);
+                })
+
+            console.log(res);
+            //props = res;
+            //return props;
+
+        }
+    })
+
+
     return (
-        <div className="login">
-            <form onSubmit={formik.handleSubmit} >
+        <div className="login" >
+            <form onSubmit={formik.handleSubmit}>
                 <h3>Inscription</h3>
                 <input id="email" placeholder="Adresse email *" type="email" {...formik.getFieldProps('email')} />
                 {formik.touched.email && formik.errors.email ? <label className="formError">{formik.errors.email}</label> : null}
@@ -56,12 +79,10 @@ const RegisterBox = () => {
                 {formik.touched.passwordConf && formik.errors.passwordConf ? <label className="formError">{formik.errors.passwordConf}</label> : null}
                 {formik.touched.passwordConf && !formik.errors.passwordConf ? <label className="formOK">Mot de passe OK !</label> : null}
 
-                <input id="nom" placeholder="Nom" type="hidden" {...formik.getFieldProps('createdAt')} />
-
 
                 <button type="submit"><img className="fusee" src={fusee} alt="#" /></button>
             </form>
-        </div>
+        </div >
     );
 };
 export default RegisterBox;
