@@ -1,12 +1,12 @@
 
 import './header/header.css';
 import './footer/footer.css';
-import './home/home.css';
+import './Home/home.css';
 import './normalize.css';
 import Header from './header/Header.js';
 import React from 'react';
 import Footer from './footer/Footer';
-import Home from './home/Home'
+import Home from './Home/Home'
 import Signinup from './connexion/log'
 
 

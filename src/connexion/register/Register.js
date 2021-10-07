@@ -5,17 +5,13 @@ import fusee from '../../images/fusee.svg'
 
 
 const RegisterBox = () => {
-    const requestOptions = {
-        method: 'post',
-        mode: 'cors',
-        headers: { 'Content-Type': 'application/json' },
-    };
 
     const formik = useFormik({
         initialValues: {
             email: '',
             pseudo: '',
             nom: '',
+            prenom: '',
             password: ''
         },
         validationSchema: Yup.object({
@@ -27,6 +23,7 @@ const RegisterBox = () => {
 
                 .min(8, 'Mot de passe trop court (8 mini)')
                 .required('* obligatoire'),
+
             passwordConf: Yup.string()
                 .min(8, 'Mot de passe trop court (8 mini)')
                 .oneOf([Yup.ref('password'), null], 'Les mots de passes doivent être identiques')
@@ -34,24 +31,22 @@ const RegisterBox = () => {
 
             // http://127.0.0.1:8000/api/signup
         }),
-        onSubmit: async (values, { setSubmitting }) => {
+        onSubmit: async (values) => {
 
-            const res = await fetch(`http://localhost:8000/api/signup`, {
+            console.log(values);
+
+            const response = await fetch(`http://localhost:8000/api/signup`, {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
-                    'Content-Type': 'application/json',
-                    body: JSON.stringify({ values })
-                }
+                    'Content-Type': 'plain/text'
+                },
+                body: 'dfsdfsdfsdfsdfsdfsf'
+
             }).then(response => response.json())
                 .then(responseJson => {
                     console.log(responseJson);
                 })
-
-            console.log(res);
-            //props = res;
-            //return props;
-
         }
     })
 
