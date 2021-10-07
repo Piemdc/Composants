@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { NavLink } from "react-router-dom";
+import Auth from "../contexts/Auth";
+import { logout } from "../services/AuthApi";
 import logo from '../images/logoseul.svg';
+import { useState } from "react";
 
 function Header() {
 
 
     const [isActive, setActive] = useState(false);
 
+    const { isAuthenticated } = useContext(Auth);
 
     function mobileMenu(a) {
 
@@ -18,9 +23,22 @@ function Header() {
 
             <ul className={`navUl ${isActive ? "active" : ""}`}>
                 <li className='navlink' onClick={mobileMenu}> <a href="#">Acceuil</a></li>
-                <li className="navlink" onClick={mobileMenu}><a href="#">Compte</a></li>
-                <li className="navlink" onClick={mobileMenu}><a href="#">Participations</a></li>
+
+
+                {(!isAuthenticated && (
+                    <>
+                        <li className="navlink" onClick={mobileMenu}><a href="#">Connexion</a></li>
+
+                    </>
+                )) || (
+                        <>
+                            <li className="navlink" onClick={mobileMenu}><a href="#">Compte</a></li>
+                            <li className="navlink" onClick={mobileMenu}><a href="#">Participations</a></li>
+                            <li className="navlink" onClick={mobileMenu}><a href="#">Deconnexion</a></li>
+                        </>
+                    )}
             </ul>
+
 
             <div className={`hamburger ${isActive ? "active" : ""}`} onClick={
                 mobileMenu}>
