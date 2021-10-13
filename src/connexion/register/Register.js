@@ -6,7 +6,12 @@ import fusee from '../../images/fusee.svg'
 
 
 
-const RegisterBox = () => {
+const RegisterBox = ({ connexion, setConnexion }) => {
+
+    function changeConnexion() {
+
+        setConnexion(!connexion);
+    };
     const [isRegistred, setRegistred] = useState(null);
     const formik = useFormik({
         initialValues: {
@@ -81,7 +86,9 @@ const RegisterBox = () => {
                     {formik.touched.passwordConf && !formik.errors.passwordConf ? <label className="formOK">Mot de passe OK !</label> : null}
 
 
-                    <button type="submit"><img className="fusee" src={fusee} alt="#" /></button>
+                    <button type="submit"><img className="fusee" src={fusee} alt="Button d'inscription" /></button>
+                    <button type="button" id="regButton" onClick={changeConnexion} > Connexion</button>
+
                 </form>
             </div >
         );

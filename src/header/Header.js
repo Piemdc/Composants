@@ -27,12 +27,13 @@ function Header() {
 
                 {(!isAuthenticated && (
                     <>
-                        <li className="navlink" onClick={mobileMenu}><a href="#">Connexion</a></li>
+                        <li className="navlink" onClick={mobileMenu}><a href="#/log/:connexion">Connexion</a></li>
+                        <li className="navlink" onClick={mobileMenu}><a href="#/log/:inscription">Inscription</a></li>
 
                     </>
                 )) || (
                         <>
-                            <li className="navlink" onClick={mobileMenu}><a href="#">Compte</a></li>
+                            <li className="navlink" onClick={mobileMenu}><a href="#/compte">Compte</a></li>
                             <li className="navlink" onClick={mobileMenu}><a href="#">Participations</a></li>
                             <li className="navlink" onClick={mobileMenu}><a href="#">Deconnexion</a></li>
                         </>

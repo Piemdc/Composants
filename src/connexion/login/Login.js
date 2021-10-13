@@ -5,12 +5,18 @@ import './Login.css';
 import fusee from '../../images/fusee.svg'
 
 
-const LoginBox = () => {
+const LoginBox = ({ connexion, setConnexion }) => {
+
+    function changeConnexion() {
+
+        setConnexion(!connexion);
+    };
+
+
 
     const formik = useFormik({
         initialValues: {
-            firstName: '',
-            lastName: '',
+            password: '',
             email: '',
         },
         validationSchema: Yup.object({
@@ -34,7 +40,6 @@ const LoginBox = () => {
                 .catch(error => console.log(error))
                 .then(responseJson => {
                     console.log(responseJson);
-
                 })
 
         },
@@ -51,13 +56,14 @@ const LoginBox = () => {
 
                 <input id="password"
                     placeholder="Mot de passe..."
-                    type="text" {...formik.getFieldProps('password')}
+                    type="password" {...formik.getFieldProps('password')}
                 />
                 {formik.touched.password && formik.errors.password ? <div>{formik.errors.password}</div> : null}
 
                 <button type="submit"><img className="fusee" src={fusee} alt="#" /></button>
+                <button type="button" id="regButton" onClick={changeConnexion} > Inscription</button>
             </form>
-        </div>
+        </div >
     );
 };
 export default LoginBox;

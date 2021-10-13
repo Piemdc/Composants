@@ -7,11 +7,12 @@ import Header from './header/Header.js';
 import React, { useState } from 'react';
 import Footer from './footer/Footer';
 import Home from './Home/Home'
-import Signinup from './connexion/log'
+import log from './connexion/log'
 import { hasAuthenticated } from './services/AuthApi'
 import Auth from './contexts/Auth';
 import AuthenticatedRoute from './components/AuthenticatedRoute';
 import { HashRouter, Route, Switch } from "react-router-dom";
+import RegisterBox from './connexion/register/Register';
 
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
           <Header />
           <Switch>
             <AuthenticatedRoute exact path="/" component={Home} />
-            <Route exact path="/connexion" component={Signinup} />
+            <Route exact path="/log" component={log} />
           </Switch>
           <Footer />
         </div>
