@@ -1,8 +1,9 @@
-import React from 'react';
+import React from "react";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import './Login.css';
 import fusee from '../../images/fusee.svg'
+import { useCookies } from "react-cookie";
 
 
 const LoginBox = ({ connexion, setConnexion }) => {
@@ -12,6 +13,8 @@ const LoginBox = ({ connexion, setConnexion }) => {
         setConnexion(!connexion);
     };
 
+
+    const [cookies, setCookie] = useCookies(["user"]);
 
 
     const formik = useFormik({
@@ -36,11 +39,16 @@ const LoginBox = ({ connexion, setConnexion }) => {
                 },
                 body: JSON.stringify(values)
 
-            }).then(response => response.json,)
-                .catch(error => console.log(error))
-                .then(responseJson => {
-                    console.log(responseJson);
+            }).then((response) => response.json())
+                .then((responseData) => {
+                    console.log(responseData);
+
+                    setCookie("user", responseData["user"], {
+                        path: "/"
+                    });
+
                 })
+                .catch(error => console.warn(error));
 
         },
     });

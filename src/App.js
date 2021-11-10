@@ -12,11 +12,14 @@ import { hasAuthenticated } from './services/AuthApi'
 import Auth from './contexts/Auth';
 import AuthenticatedRoute from './components/AuthenticatedRoute';
 import { HashRouter, Route, Switch } from "react-router-dom";
-import RegisterBox from './connexion/register/Register';
+import Account from './account/Account';
+import { useCookies } from "react-cookie";
 
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(hasAuthenticated());
+  const [cookies, setCookie] = useCookies();
+  const [isAuthenticated, setIsAuthenticated] = useState(hasAuthenticated(cookies.user));
+
 
 
   return (
@@ -26,6 +29,7 @@ function App() {
           <Header />
           <Switch>
             <AuthenticatedRoute exact path="/" component={Home} />
+            <AuthenticatedRoute exact path="/account" component={Account} />
             <Route exact path="/log" component={log} />
           </Switch>
           <Footer />

@@ -1,3 +1,7 @@
-export function hasAuthenticated() {
-    return false;
+export function hasAuthenticated(user) {
+
+    if (user) {
+        return true;
+    } else return false;
+
 }

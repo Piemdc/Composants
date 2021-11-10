@@ -33,7 +33,7 @@ function Header() {
                     </>
                 )) || (
                         <>
-                            <li className="navlink" onClick={mobileMenu}><a href="#/compte">Compte</a></li>
+                            <li className="navlink" onClick={mobileMenu}><a href="#/account">Compte</a></li>
                             <li className="navlink" onClick={mobileMenu}><a href="#">Participations</a></li>
                             <li className="navlink" onClick={mobileMenu}><a href="#">Deconnexion</a></li>
                         </>

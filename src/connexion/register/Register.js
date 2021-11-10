@@ -39,15 +39,12 @@ const RegisterBox = ({ connexion, setConnexion }) => {
             // http://127.0.0.1:8000/api/signup
         }),
         onSubmit: values => {
-
-
-
             fetch(`http://localhost:8000/api/signup`, {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
                     "access-control-allow-origin": "*",
-                    "Content-type": "application/json; charset=UTF-8"
+                    "Content-type": "application/json"
                 },
                 body: JSON.stringify(values)
 
@@ -96,7 +93,7 @@ const RegisterBox = ({ connexion, setConnexion }) => {
     else return (
         <div className="login">
             <h3>Bienvenue</h3>
-            <button type="submit">Acceder au site</button>
+            <button type="submit" onClick={changeConnexion}>Acceder au site</button>
 
         </div>
     )

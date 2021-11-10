@@ -1,0 +1,36 @@
+/* @font-face {
+    font-family: 'Rabbit And Foxes';
+    src: url(../fonts/RabbitsAndFoxes.ttf);
+  }
+
+  main
+  {
+   display: flex!important;
+   flex-direction: column;
+   background-image: url(../images/account.jpg);
+      background-repeat: no-repeat;
+      background-origin: content-box;
+      background-position:top;
+      background-size: 100%;
+  }
+
+.account
+{
+    padding:0% 0 8% 0 ;
+}
+
+.accountbox{
+  background-color: white;
+  padding: 8% 5% 5% 5%;
+  width: 60%;
+  margin: 0 auto;
+  -webkit-box-shadow: 0px 8px 9px 0px rgba(0,0,0,0.38); 
+  box-shadow: 0px 8px 9px 0px rgba(0,0,0,0.38);
+}
+
+form{
+width: 90%;
+}
+input{
+  margin: 10px 0;
+} */
