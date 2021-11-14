@@ -1,6 +1,6 @@
-export function hasAuthenticated(user) {
+export function hasAuthenticated() {
 
-    if (user) {
+    if (localStorage.getItem("user")) {
         return true;
     } else return false;
 

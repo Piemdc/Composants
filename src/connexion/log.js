@@ -8,13 +8,17 @@ import './log.css';
 export default function Signinup() {
     const [connexion, setConnexion] = useState(true)
 
+
     if (connexion === true) {
         return (
 
             <div className="log">
                 <LoginBox connexion={connexion} setConnexion={setConnexion} />
+
             </div>
+
         )
+
     }
     else {
 

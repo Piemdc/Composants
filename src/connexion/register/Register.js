@@ -12,6 +12,7 @@ const RegisterBox = ({ connexion, setConnexion }) => {
 
         setConnexion(!connexion);
     };
+
     const [isRegistred, setRegistred] = useState(null);
     const formik = useFormik({
         initialValues: {

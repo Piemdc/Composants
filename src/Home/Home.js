@@ -32,6 +32,7 @@ export default function Home() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
 
+
     useEffect(() => {
         fetch('http://127.0.0.1:8000/api/article')
             .then(response => response.json())

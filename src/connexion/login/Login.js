@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import './Login.css';
 import fusee from '../../images/fusee.svg'
-import { useCookies } from "react-cookie";
-
 
 const LoginBox = ({ connexion, setConnexion }) => {
 
@@ -13,8 +11,14 @@ const LoginBox = ({ connexion, setConnexion }) => {
         setConnexion(!connexion);
     };
 
+    const [loginError, setLoginError] = useState(false)
 
-    const [cookies, setCookie] = useCookies(["user"]);
+
+
+
+
+
+
 
 
     const formik = useFormik({
@@ -42,13 +46,15 @@ const LoginBox = ({ connexion, setConnexion }) => {
             }).then((response) => response.json())
                 .then((responseData) => {
                     console.log(responseData);
+                    if (responseData['user']) {
+                        localStorage.setItem('user', JSON.stringify(responseData['user']));
+                        window.location.reload(false);
+                    } else setLoginError(responseData)
 
-                    setCookie("user", responseData["user"], {
-                        path: "/"
-                    });
 
                 })
-                .catch(error => console.warn(error));
+                .catch();
+
 
         },
     });
@@ -67,11 +73,12 @@ const LoginBox = ({ connexion, setConnexion }) => {
                     type="password" {...formik.getFieldProps('password')}
                 />
                 {formik.touched.password && formik.errors.password ? <div>{formik.errors.password}</div> : null}
-
+                {loginError ? <label className="formError">Nom d'utilisateur ou mot de passe incorrect</label> : null}
                 <button type="submit"><img className="fusee" src={fusee} alt="#" /></button>
                 <button type="button" id="regButton" onClick={changeConnexion} > Inscription</button>
             </form>
         </div >
     );
+
 };
 export default LoginBox;

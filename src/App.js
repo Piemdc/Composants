@@ -11,6 +11,7 @@ import log from './connexion/log'
 import { hasAuthenticated } from './services/AuthApi'
 import Auth from './contexts/Auth';
 import AuthenticatedRoute from './components/AuthenticatedRoute';
+import UnableToLogAgain from './components/UnableToLogAgain';
 import { HashRouter, Route, Switch } from "react-router-dom";
 import Account from './account/Account';
 import { useCookies } from "react-cookie";
@@ -18,7 +19,7 @@ import { useCookies } from "react-cookie";
 
 function App() {
   const [cookies, setCookie] = useCookies();
-  const [isAuthenticated, setIsAuthenticated] = useState(hasAuthenticated(cookies.user));
+  const [isAuthenticated, setIsAuthenticated] = useState(hasAuthenticated());
 
 
 
@@ -30,9 +31,9 @@ function App() {
           <Switch>
             <AuthenticatedRoute exact path="/" component={Home} />
             <AuthenticatedRoute exact path="/account" component={Account} />
-            <Route exact path="/log" component={log} />
+            <UnableToLogAgain exact path="/log" component={log} />
           </Switch>
-          <Footer />
+
         </div>
       </HashRouter>
     </Auth.Provider>
