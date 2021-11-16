@@ -3,7 +3,7 @@
     src: url(../fonts/RabbitsAndFoxes.ttf);
   }
 
-  main
+  .account
   {
    display: flex!important;
    flex-direction: column;
@@ -14,23 +14,143 @@
       background-size: 100%;
   }
 
-.account
-{
-    padding:0% 0 8% 0 ;
+.accountbox{
+  margin-top: 35%!important;
 }
 
-.accountbox{
+.accountbox, .contactbox{
   background-color: white;
   padding: 8% 5% 5% 5%;
-  width: 60%;
-  margin: 0 auto;
+  width: 80%;
+  height: 50auto;
+  margin: 5% auto;
   -webkit-box-shadow: 0px 8px 9px 0px rgba(0,0,0,0.38); 
   box-shadow: 0px 8px 9px 0px rgba(0,0,0,0.38);
+  border-radius: 20px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
 }
 
-form{
-width: 90%;
+.accountbox>form>input{
+  margin: 0 auto;
+  width: 90%;
 }
-input{
-  margin: 10px 0;
+
+.accountname, .contactsname{
+  text-align: center;
+  font-family: 'Rabbit And Foxes';
+  color: #584998;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 2em;
+  margin-bottom: 5%;
+
+}
+
+.avatarbox{
+  width: 50%;
+  margin: 0 auto;
+  position: relative;
+}
+.avatarbox>img{
+  width: 100%;
+}
+.avatarbutton{
+  position: absolute;
+  top: 45%;
+  left: 110%;
+  background: none;
+  border: none;
+  color: #584998;
+  height: 30px;
+  width: 30px;
+}
+
+.avatarbutton img{
+  width: 100%;
+}
+
+
+.detailsForm{
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.accountAvatar, .contactImg{
+  width: 40%;
+  border-style: solid;
+  border-color: #584998;
+  border-radius: 150%;
+}
+
+.labels{
+  font-size: 0.8em;
+  margin: 20px 0;
+  width: 50%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+
+.labels>label{
+  background-color: rgba(197, 190, 190, 0.233);
+  padding: 10px;
+  
+}
+
+h4{
+  font-weight: normal;
+  width: 80%;
+  margin: 0 auto;
+
+}
+
+.inputs{
+  font-size: 0.8em;
+  margin: 20px 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.inputs>input{
+  background-color: rgba(197, 190, 190, 0.096);
+  padding: 10px;
+  border: none;
+}
+.contact{
+  width: 100%;
+  margin-top: 2%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.contactImg{
+  width: 15%;
+  height: auto;
+}
+.contactName{
+  font-size: 1em;
+}
+
+.contactDelete{
+  border: none;
+  background: none;
+  color: red;
+  font-weight: bolder;
+}
+.contactbutton{
+  border:none;
+  background-color: #00AC45;
+  margin-top: 5%;
+  color: white;
+  padding: 2%;
+  border-radius: 25px;
+  width: 70%;
+  margin: 0 auto;
+
 }

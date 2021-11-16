@@ -1,8 +1,8 @@
 import fusee from '../images/fusee.svg'
 import Articles from './articles/Articles';
 import Cards from './cards/Cards'
-import './cards/cards.css'
-import './articles/articles.css'
+import styles from "./home.css";
+
 import React, { useEffect, useState } from "react";
 
 
@@ -58,7 +58,7 @@ export default function Home() {
         return <div>Chargement...</div>;
     } else {
         return (
-            < main >
+            < main className="home" >
                 <section class="rappel">
                     <h1>????</h1>
                     <div className="coming">

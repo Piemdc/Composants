@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import './Login.css';
 import fusee from '../../images/fusee.svg'
 
 const LoginBox = ({ connexion, setConnexion }) => {
@@ -12,14 +11,6 @@ const LoginBox = ({ connexion, setConnexion }) => {
     };
 
     const [loginError, setLoginError] = useState(false)
-
-
-
-
-
-
-
-
 
     const formik = useFormik({
         initialValues: {
@@ -62,20 +53,20 @@ const LoginBox = ({ connexion, setConnexion }) => {
         <div className="login">
             <form onSubmit={formik.handleSubmit} >
                 <h3>Connexion</h3>
-                <input id="email"
+                <input className="logInput" id="email"
                     placeholder="Adresse email..."
                     type="email" {...formik.getFieldProps('email')}
                 />
                 {formik.touched.email && formik.errors.email ? <div>{formik.errors.email}</div> : null}
 
-                <input id="password"
+                <input className="logInput" id="password"
                     placeholder="Mot de passe..."
                     type="password" {...formik.getFieldProps('password')}
                 />
                 {formik.touched.password && formik.errors.password ? <div>{formik.errors.password}</div> : null}
                 {loginError ? <label className="formError">Nom d'utilisateur ou mot de passe incorrect</label> : null}
-                <button type="submit"><img className="fusee" src={fusee} alt="#" /></button>
-                <button type="button" id="regButton" onClick={changeConnexion} > Inscription</button>
+                <button className="logButton" type="submit"><img className="fusee" src={fusee} alt="#" /></button>
+                <button className="logButton" type="button" id="regButton" onClick={changeConnexion} > Inscription</button>
             </form>
         </div >
     );

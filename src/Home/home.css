@@ -3,7 +3,7 @@
     src: url(../fonts/RabbitsAndFoxes.ttf);
 }
 
-main
+.home
 {
  display: flex!important;
  flex-direction: column;
@@ -69,7 +69,7 @@ main
 
 @media only screen and (max-width: 1024px) {
 
-    main{
+    .home{
         background:none;
     }
     
@@ -87,7 +87,7 @@ main
 @media only screen and (min-width: 1024px) 
 
 {
-    main
+    .home
 
     {
         flex-direction: row;
@@ -146,6 +146,73 @@ main
     
 }
 
+.article{
+    padding: 25% 0;
+    background-size: cover!important;
+    text-align: right;
+    z-index: 1000;
+}
+
+.blur{
+    background-color: rgba(0, 0, 0, 0.418);
+    padding: 5%;
+    backdrop-filter: blur(10px);
+
+}
+
+.articletitle, .articletext
+{
+    color: white!important;
+}
+
+.articletitle{
+    font-family: 'Century Gothic';
+    font-weight: 300;
+    font-size: 2em;
+    margin-bottom: 50px;
+}
+
+.card
+{
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 5% 5%;
+    color:#9F9F9F;
+}
+
+.cardtitle
+
+{
+    text-transform: uppercase;
+}
+
+
+
+.cardimg
+{
+    width: 40%;
+}
+
+
+@media only screen and (min-width: 1024px) 
+
+{
+    .article
+    {
+        padding: 10% 0;
+    }
+    .blur{
+        padding: 10%
+    }
+
+    .card
+    {
+        width: 20%;
+    }
+}
+
+
 @media only screen and (min-width: 1700px) 
 {
 
@@ -157,3 +224,5 @@ main
     }
 
 }
+
+

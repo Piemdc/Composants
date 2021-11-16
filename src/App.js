@@ -14,11 +14,9 @@ import AuthenticatedRoute from './components/AuthenticatedRoute';
 import UnableToLogAgain from './components/UnableToLogAgain';
 import { HashRouter, Route, Switch } from "react-router-dom";
 import Account from './account/Account';
-import { useCookies } from "react-cookie";
 
 
 function App() {
-  const [cookies, setCookie] = useCookies();
   const [isAuthenticated, setIsAuthenticated] = useState(hasAuthenticated());
 
 

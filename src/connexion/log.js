@@ -2,7 +2,7 @@ import fusee from '../images/fusee.svg'
 import React, { useState } from 'react';
 import LoginBox from './login/Login';
 import RegisterBox from './register/Register'
-import './log.css';
+import styles from "./log.css";
 
 
 export default function Signinup() {
