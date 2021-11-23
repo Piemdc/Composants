@@ -15,21 +15,22 @@
   }
 
 .accountbox{
-  margin-top: 35%!important;
+  margin-top: 35%;
 }
 
-.accountbox, .contactbox{
+.accountbox, .contactbox, .eventbox{
   background-color: white;
   padding: 8% 5% 5% 5%;
   width: 80%;
-  height: 50auto;
-  margin: 5% auto;
+  height: auto;
+  margin: 5% auto 0;
   -webkit-box-shadow: 0px 8px 9px 0px rgba(0,0,0,0.38); 
   box-shadow: 0px 8px 9px 0px rgba(0,0,0,0.38);
   border-radius: 20px;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
+  align-items: center;
 }
 
 .accountbox>form>input{
@@ -37,7 +38,8 @@
   width: 90%;
 }
 
-.accountname, .contactsname{
+.accountname{
+  width: 100%;
   text-align: center;
   font-family: 'Rabbit And Foxes';
   color: #584998;
@@ -83,47 +85,44 @@
   border-style: solid;
   border-color: #584998;
   border-radius: 150%;
+  transition: 800ms;
+  background: white;
 }
 
-.labels{
-  font-size: 0.8em;
-  margin: 20px 0;
-  width: 50%;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
-}
-
-.labels>label{
-  background-color: rgba(197, 190, 190, 0.233);
-  padding: 10px;
-  
-}
-
-h4{
-  font-weight: normal;
-  width: 80%;
-  margin: 0 auto;
-
+.accountAvatar:hover,.contactImg:hover{
+  transform:scale(1.1);
 }
 
 .inputs{
-  font-size: 0.8em;
-  margin: 20px 0;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
-  width: 50%;
+  margin: 2% auto;
+  width: 100%;
 }
 
-.inputs>input{
+.labels{
+  display: flex;
+  justify-content: space-between ;
+}
+
+.labels>label{
+  background-color: rgba(197, 190, 190, 0.233);  
+  width: 50%;
+  font-weight: 600;
+  
+  padding: 10px;
+}
+
+.labels>input{
   background-color: rgba(197, 190, 190, 0.096);
   padding: 10px;
-  border: none;
+  font-style: italic;
+  width: 50%;
+  border: white 1px solid;
+  position: relative;
 }
 .contact{
   width: 100%;
   margin-top: 2%;
+  padding: 2%;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
@@ -146,11 +145,139 @@ h4{
 .contactbutton{
   border:none;
   background-color: #00AC45;
-  margin-top: 5%;
   color: white;
   padding: 2%;
   border-radius: 25px;
   width: 70%;
   margin: 0 auto;
+  transition: 800ms;
+  cursor:pointer;
+}
+
+.contactbutton:hover{
+  transform: scale(1.02);
+  background-color: #00ac45b4;
+  
+}
+.formOK, .formError{
+
+  position: absolute;
+  margin: 0;
+  right: 9%;
+  background: none!important;
+}
+
+.formOK, .formError{
+  display: none;
+
+}
+
+@media only screen and (min-width: 768px) 
+
+{
+  .formOK, .formError{
+    display: block;
+    position: absolute;
+    margin: 0;
+    right: 15%;
+    background: none!important;
+  }
+
+  .avatarbox{
+      width: 30%;
+  }
+}
+
+
+@media only screen and (min-width: 1024px) 
+
+{
+  .formOK, .formError{
+    right: 10%;
+
+  
+  }
+  
+  .account{
+    background-size:cover;
+    background-position: center;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items:stretch;
+  }
+
+  .accountbox, .contactbox, .eventbox{
+    width: 30%;
+    justify-content: space-between;
+    flex-shrink: 3;
+    flex-grow:0;
+    flex-basis:auto
+  }
+  .contactbutton{
+    justify-self: end;
+  }
+
+  .accountname{
+    margin: 0;
+    padding: 2%;
+  }
+
+  .labels>*{
+    font-size: 0.8em;
+  }
+  
+  .eventbox{
+    width:70%;
+    padding: 2%;
+    flex-flow: row wrap;
+  }
+}
+@media only screen and (min-width: 1440px) 
+
+{
+.accountbox, .contactbox, .eventbox{
+  
+  width: 20%;
+ 
+}
+
+.accountname{
+  font-size: 3em;
+}
+
+.eventbox{
+  width: 50%;
+  padding: 1%;
+  box-shadow: none;
+  background: none;
+}
+.eventbox>.accountname{
+  color: white;
+  text-shadow: 0px 0px 6px rgba(0,0,0,0.23);}
+
+}
+.inputs{
+  padding: 10% 0;
+
+}
+
+@media only screen and (min-width: 1900px) 
+
+{
+  
+  .accountbox, .contactbox, .eventbox{
+  
+    width: 20%;
+    padding: 2%;
+   
+  }
+  .eventbox{
+    width: 70%;
+    padding: 1%;
+    box-shadow: none;
+    background: none;
+  }
+
+  
 
 }

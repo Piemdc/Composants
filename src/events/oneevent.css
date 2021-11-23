@@ -1,0 +1,55 @@
+.oneEvent{
+    display: flex;
+    width: 100%;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+}
+.oneEventTitle{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    padding: 10% 0;
+}
+.oneEventTitle>img{
+    width: 15%;
+}
+
+.oneEventTitle p{
+    margin: 0;
+    font-size: 0.9em;
+    color: rgb(85, 84, 84);
+}
+
+.oneEventTitle>h1{
+    font-family: 'Rabbit And Foxes';
+    color: #261d4d;
+
+}
+
+.modifyButton{
+    padding: 2%;
+    border-radius: 0;
+}
+
+.oneEventDetails{
+
+    background-color: white;
+    padding: 2% 5% 2% 5%;
+    margin: 10%;
+    width: 80%;
+    position:relative;
+    margin: 5% auto 0;
+    -webkit-box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.20); 
+    box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.20);
+    border-radius: 20px;
+
+}
+
+.oneEventDetails p{
+    word-break: break-all;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8em;
+    line-height: 20px;
+    width: 100%;
+}

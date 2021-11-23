@@ -1,4 +1,3 @@
-// import './account.css';
 import React, { useEffect, useState } from "react";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -10,8 +9,12 @@ export default function Accountdetails() {
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
     const [avatar, setAvatar] = useState([false])
+    const [modified, setModified] = useState(false);
+
     let changeAvatar = '';
     let modifierAvatar = '';
+
+    function switchModified() { setModified(!modified); };
 
     function switchChangeAvatar() { setAvatar(!avatar); };
 
@@ -24,7 +27,7 @@ export default function Accountdetails() {
                 "access-control-allow-origin": "*",
                 "Content-type": "application/json; charset=UTF-8"
             },
-            body: localStorage.getItem("user")
+            body: JSON.stringify({ user: + localStorage.getItem("user") })
 
         })
             .then(response => response.json())
@@ -39,7 +42,7 @@ export default function Accountdetails() {
                     setError(error);
                 }
             )
-    }, [])
+    }, [modified])
 
     const formik = useFormik({
 
@@ -72,6 +75,9 @@ export default function Accountdetails() {
                 .required('* obligatoire'),
         }),
         onSubmit: values => {
+
+
+            switchModified();
             fetch((`http://localhost:8000/api/updateAccount/` + localStorage.getItem("user")), {
                 method: 'POST',
                 mode: 'cors',
@@ -89,6 +95,7 @@ export default function Accountdetails() {
 
         }
     })
+
     avatar ? changeAvatar = <img className="accountAvatar" src={'/images/' + items.avatar} alt='Avatar Alien' /> : changeAvatar = <select name="avatars" id='avatar' placeholder={items['avatar']} {...formik.getFieldProps('avatar')} />
 
 
@@ -112,29 +119,31 @@ export default function Accountdetails() {
                 </div>
                 <form className="detailsForm" onSubmit={formik.handleSubmit}>
 
-                    <div className='labels'>
-                        <label htmlFor="pseudo"><h4>Nom d'utilisateur :</h4></label> <br />
-                        <label htmlFor="nom"><h4>Nom :</h4></label> <br />
-                        <label htmlFor="prenom"><h4>Prenom :</h4></label> <br />
-                        <label htmlFor="email"><h4>Adresse Mail :</h4></label> <br />
-                        <label htmlFor="password"><h4>Mot de passe :</h4></label>
-                    </div>
+
 
                     <div className="inputs">
-                        <input id="pseudo" type="text" {...formik.getFieldProps('pseudo')} />
-                        {formik.touched.pseudo && formik.errors.pseudo ? <label className="formError">{formik.errors.pseudo}</label> : null}
-                        {formik.touched.pseudo && !formik.errors.pseudo ? <label className="formOK">Pseudo valide</label> : null}
-
-                        <input id="nom" type="text" {...formik.getFieldProps('nom')} />
-
-                        <input id="prenom" type="text" {...formik.getFieldProps('prenom')} />
-
-                        <input id="email" type="email" {...formik.getFieldProps('email')} />
-                        {formik.touched.email && formik.errors.email ? <label className="formError">{formik.errors.email}</label> : null}
-                        {formik.touched.email && !formik.errors.email ? <label className="formOK">Email valide</label> : null}
-
-                        <input id="password" type="password" {...formik.getFieldProps('password')} />
-                        {formik.touched.password && formik.errors.password ? <label className="formError">{formik.errors.password}</label> : null}
+                        <div className='labels'>
+                            <label htmlFor="pseudo">Nom d'utilisateur :</label> <br />
+                            <input id="pseudo" type="text" {...formik.getFieldProps('pseudo')} />
+                            {formik.touched.pseudo && formik.errors.pseudo ? <label className="formError">{formik.errors.pseudo}</label> : null}
+                            {formik.touched.pseudo && !formik.errors.pseudo ? <label className="formOK">Pseudo valide</label> : null}
+                        </div>
+                        <div className='labels'>
+                            <label htmlFor="nom">Nom :</label> <br />
+                            <input id="nom" type="text" {...formik.getFieldProps('nom')} />
+                        </div>
+                        <div className='labels'>
+                            <label htmlFor="prenom">Prenom :</label> <br />
+                            <input id="prenom" type="text" {...formik.getFieldProps('prenom')} />
+                        </div>
+                        <div className='labels'>
+                            <label htmlFor="email">Adresse Mail :</label> <br />
+                            <input id="email" type="email" {...formik.getFieldProps('email')} />
+                            {formik.touched.email && formik.errors.email ? <label className="formError">{formik.errors.email}</label> : null}
+                            {formik.touched.email && !formik.errors.email ? <label className="formOK">Email valide</label> : null}
+                        </div>
+                        {/* <input id="password" type="password" {...formik.getFieldProps('password')} />
+                        {formik.touched.password && formik.errors.password ? <label className="formError">{formik.errors.password}</label> : null} */}
 
                         {/* <input id="passwordConf" placeholder="Répetez le Mot de passe *" type="password" {...formik.getFieldProps('passwordConf')} />
                     {formik.touched.passwordConf && formik.errors.passwordConf ? <label className="formError">{formik.errors.passwordConf}</label> : null}

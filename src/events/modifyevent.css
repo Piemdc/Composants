@@ -1,0 +1,88 @@
+.modifyEvent{
+    /* background-image: url(../images/fond-alien.jpg);
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-position:center;
+    background-size:cover; */
+    width: 100%;
+
+}
+
+.modifyEvent>form, .eventmodifyValidation{
+background-color: white;
+display: flex;
+align-content: center;
+justify-content: center;
+flex-flow: column;
+width: 85%;
+padding: 5%;
+height: auto;
+margin: 10% auto;
+
+}
+
+.modifyEventInput{
+margin:  0;
+padding: 4%;
+border-radius: 0 0 10px 10px;
+border: solid 1px #584998;
+border-top: none;
+}
+
+.modifyEventButton{
+width: 50%;
+margin: 10% auto;
+background: none;
+}
+
+.modifyEvent>form>h3, .eventmodifyValidation>h3{
+
+    font-family: 'Rabbit And Foxes';
+    color: #584998;
+    font-size: 2em;
+    text-align: center;
+    margin: 0
+}
+.modifyEvent >form> label{
+    margin-top: 5%;
+    border: solid 1px #584998;
+    border-bottom: none;
+    padding: 2%;
+    color: white;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+    background-color: rgba(158, 158, 158, 0.575);
+    -webkit-box-shadow: 0px 7px 12px -10px #000000; 
+    box-shadow: 0px 7px 12px -13px #000000;
+    z-index: 10;
+}
+
+
+
+@media all and (min-width:780px) {
+
+.modifyEvent>form, .eventmodifyValidation {
+ width: 60%;
+}
+
+}
+
+@media all and (min-width: 1024px) {
+
+
+.modifyEvent>form, .eventmodifyValidation {
+    width: 40%;
+   }
+
+}
+
+
+@media all and (min-width: 1440px) {
+
+
+.modifyEvent>form, .eventmodifyValidation {
+    width: 30%;
+   }
+
+}
+

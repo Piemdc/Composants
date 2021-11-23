@@ -1,14 +1,16 @@
 import styles from "./account.css";
 import React, { useEffect, useState } from "react";
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
 import Contact from './Contact';
 import Accountdetails from './Accountdetails';
+import EventThumbnail from './EventThumbnail';
+import { useHistory } from "react-router-dom";
 
 
 export default function Account() {
 
     const [isLoaded, setIsLoaded] = useState(true);
+    const [events, setEvents] = useState([]);
+    const [error, setError] = useState(null);
     const user = [
         {
             avatar: '1.png',
@@ -26,7 +28,30 @@ export default function Account() {
             id: '3',
         }
     ];
-    let error = false;
+
+    const history = useHistory();
+
+    function routeChange(path) {
+        history.replace(path)
+    }
+
+    useEffect(() => {
+        fetch('http://localhost:8000/api/eventlist/' + localStorage.getItem("user"))
+            .then(response => response.json())
+            .then(
+                (result) => {
+                    setIsLoaded(true);
+                    setEvents(result);
+                },
+
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            )
+    }, [])
+    console.log(user)
+
 
     if (error) {
         return <div>Erreur : {error.message}</div>;
@@ -37,21 +62,39 @@ export default function Account() {
         return (
 
             <main className="account">
-                <section className="account" >
-                    <Accountdetails />
 
-                    <div className="contactbox" >
-                        <h4 className="contactsname">CONTACTS</h4>
+                <Accountdetails />
+
+                <div className="contactbox" >
+
+                    <div>
+                        <h4 className="accountname">CONTACTS</h4>
                         {
                             user.map((e) => {
                                 return (<Contact avatar={e.avatar} pseudo={e.pseudo} texte={e.id} />)
                             })
                         }
-                        <button type="submit" className="contactbutton">Ajouter un contact</button>
-
-
                     </div>
-                </section >
+                    <button type="submit" className="contactbutton">Ajouter un contact</button>
+                </div>
+
+                <div className="eventbox" >
+                    <h4 className="accountname">EVENEMENTS</h4>
+                    {
+                        events.map((e) => {
+                            return (<EventThumbnail id={e.id} icone={e.icone} nom={e.nom} />)
+                        })
+                    }
+                    <button type='button' className="thumbnail" onClick={() => { routeChange('/createevent') }}>
+                        <img className="eventIcone" src={"/images/events/plus.png"} alt="icône evenement" />
+                        <h2 className="eventTitle">Créer</h2>
+                    </button>
+
+                </div>
+
+
+
+
 
             </main >
         )

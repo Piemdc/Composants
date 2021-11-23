@@ -110,12 +110,12 @@ header
 
   .navUl {
       position: static;
+      width: 50%;
       left: 0;
       top: 0;
       padding: 0;
       flex-direction: row;
-      justify-content: space-between;
-      width: 20%;
+      justify-content: space-around;
       border-radius: 0px;
       text-align: center;
       transition: none;

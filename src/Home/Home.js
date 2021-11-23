@@ -49,6 +49,22 @@ export default function Home() {
             )
     }, [])
 
+    useEffect(() => {
+        fetch('http://127.0.0.1:8000/api/article')
+            .then(response => response.json())
+            .then(
+                (result) => {
+                    setIsLoaded(true);
+                    setItems(result);
+                },
+
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            )
+    }, [])
+
 
 
 
@@ -60,10 +76,10 @@ export default function Home() {
         return (
             < main className="home" >
                 <section class="rappel">
-                    <h1>????</h1>
+                    <h1>Gépa 10d</h1>
                     <div className="coming">
-                        <h3>Ca arrive :</h3>
-                        <p>Utilisateurs : </p>
+                        <h3>Welcome back !</h3>
+                        <p>utilisateurTest</p>
                         <p>EvenementTEST - <strong>Aujourd'hui</strong><img class="fusee" src={fusee} alt="#" /></p>
                         <p>EvenementTEST - <strong>4 jours</strong><img class="fusee" src={fusee} alt="#" /></p>
                         <a href="#"> Mes evenements</a>

@@ -22,13 +22,12 @@ function Header() {
             <img src={logo} className="logo"></img>
 
             <ul className={`navUl ${isActive ? "active" : ""}`}>
-                <li className='navlink' onClick={mobileMenu}> <a href="#">Acceuil</a></li>
+                <li className='navlink' onClick={mobileMenu}> <a href="#">Accueil</a></li>
 
 
                 {(!isAuthenticated && (
                     <>
-                        <li className="navlink" onClick={mobileMenu}><a href="#/log/:connexion">Connexion</a></li>
-                        <li className="navlink" onClick={mobileMenu}><a href="#/log/:inscription">Inscription</a></li>
+                        <li className="navlink" onClick={mobileMenu}><a href="#/log">Connexion</a></li>
 
                     </>
                 )) || (
