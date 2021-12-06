@@ -29,14 +29,24 @@ export default function Account() {
         }
     ];
 
+
     const history = useHistory();
 
     function routeChange(path) {
         history.replace(path)
     }
 
+
+
     useEffect(() => {
-        fetch('http://localhost:8000/api/eventlist/' + localStorage.getItem("user"))
+        fetch('https://piemdc.fr/api/eventlist/' + localStorage.getItem("user"), {
+            headers: {
+                method: 'POST',
+                mode: 'cors',
+                "access-control-allow-origin": "*",
+                "Content-type": "application/json"
+            },
+        })
             .then(response => response.json())
             .then(
                 (result) => {
@@ -50,7 +60,6 @@ export default function Account() {
                 }
             )
     }, [])
-    console.log(user)
 
 
     if (error) {

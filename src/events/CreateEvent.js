@@ -52,7 +52,7 @@ export default function CreateEvent() {
 
         }),
         onSubmit: values => {
-            fetch(`http://localhost:8000/api/newevent`, {
+            fetch(`https://piemdc.fr/api/newevent`, {
                 method: 'POST',
                 mode: 'cors',
                 headers: {

@@ -34,8 +34,16 @@ export default function Home() {
 
 
     useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/article')
+        fetch('http://localhost:8000/api/article', {
+            headers: {
+                method: 'POST',
+                mode: 'cors',
+                "access-control-allow-origin": "*",
+                "Content-type": "application/json"
+            },
+        })
             .then(response => response.json())
+
             .then(
                 (result) => {
                     setIsLoaded(true);
@@ -48,25 +56,6 @@ export default function Home() {
                 }
             )
     }, [])
-
-    useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/article')
-            .then(response => response.json())
-            .then(
-                (result) => {
-                    setIsLoaded(true);
-                    setItems(result);
-                },
-
-                (error) => {
-                    setIsLoaded(true);
-                    setError(error);
-                }
-            )
-    }, [])
-
-
-
 
     if (error) {
         return <div>Erreur : {error.message}</div>;

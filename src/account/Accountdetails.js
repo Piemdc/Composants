@@ -20,7 +20,7 @@ export default function Accountdetails() {
 
 
     useEffect(() => {
-        fetch(`http://localhost:8000/api/account`, {
+        fetch(`https://piemdc.fr/api/account`, {
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -78,7 +78,7 @@ export default function Accountdetails() {
 
 
             switchModified();
-            fetch((`http://localhost:8000/api/updateAccount/` + localStorage.getItem("user")), {
+            fetch((`https://piemdc.fr/api/updateAccount/` + localStorage.getItem("user")), {
                 method: 'POST',
                 mode: 'cors',
                 headers: {

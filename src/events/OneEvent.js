@@ -29,7 +29,7 @@ export default function OneEvent(props) {
 
 
     useEffect(() => {
-        fetch(`http://localhost:8000/api/event`, {
+        fetch(`https://piemdc.fr/api/event`, {
             method: 'POST',
             mode: 'cors',
             headers: {

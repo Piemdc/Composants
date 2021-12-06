@@ -32,6 +32,7 @@ const RegisterBox = ({ connexion, setConnexion }) => {
                 .min(8, 'Mot de passe trop court (8 mini)')
                 .required('* obligatoire'),
 
+
             passwordConf: Yup.string()
                 .min(8, 'Mot de passe trop court (8 mini)')
                 .oneOf([Yup.ref('password'), null], 'Les mots de passes doivent être identiques')
@@ -50,7 +51,7 @@ const RegisterBox = ({ connexion, setConnexion }) => {
 
             }).then(response => response.json,)
                 .catch(error => console.log(error))
-                .then(responseJson => {
+                .then(response => {
                     setRegistred(true);
 
                 })

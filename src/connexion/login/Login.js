@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import fusee from '../../images/fusee.svg'
+import jwt from 'jwt-decode'
 
 const LoginBox = ({ connexion, setConnexion }) => {
 
@@ -22,7 +23,6 @@ const LoginBox = ({ connexion, setConnexion }) => {
         validationSchema: Yup.object({
             email: Yup.string().email('Invalid email address').required('Required'),
             password: Yup.string()
-
                 .min(8, 'Must be 8 characters or more')
                 .required('Required'),
         }),
@@ -39,18 +39,17 @@ const LoginBox = ({ connexion, setConnexion }) => {
             }).then((response) => response.json())
                 .then((responseData) => {
                     console.log(responseData);
-                    if (responseData['user']) {
-                        localStorage.setItem('user', JSON.stringify(responseData['user']));
+                    if (responseData['token']) {
+                        localStorage.setItem('token', JSON.stringify(responseData['token']));
                         window.location.reload(false);
                     } else setLoginError(responseData)
 
 
                 })
                 .catch();
-
-
-        },
+        }
     });
+
     return (
         <div className="login">
             <form onSubmit={formik.handleSubmit} >

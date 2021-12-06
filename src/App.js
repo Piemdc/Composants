@@ -10,7 +10,7 @@ import { HashRouter, Route, Switch } from "react-router-dom";
 
 import Header from './header/Header.js';
 import Home from './Home/Home'
-import log from './connexion/log'
+import Log from './connexion/Log'
 import Account from './account/Account';
 import CreateEvent from './events/CreateEvent';
 import OneEvent from './events/OneEvent';
@@ -37,7 +37,7 @@ function App() {
             <AuthenticatedRoute exact path="/account" component={Account} />
             <AuthenticatedRoute exact path="/createevent" component={CreateEvent} />
             <AuthenticatedRoute exact path="/event/*" component={OneEvent} />
-            <UnableToLogAgain exact path="/log" component={log} />
+            <UnableToLogAgain exact path="/log" component={Log} />
           </Switch>
 
         </div>

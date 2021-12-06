@@ -7,7 +7,7 @@ export default function Need(props) {
     const [need, setNeed] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:8000/api/need`, {
+        fetch(`https://piemdc.fr/api/need`, {
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -32,6 +32,7 @@ export default function Need(props) {
 
 
     }, []);
+
 
     return (
         <>
