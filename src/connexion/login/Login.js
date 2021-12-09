@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import fusee from '../../images/fusee.svg'
-import jwt from 'jwt-decode'
+
 
 const LoginBox = ({ connexion, setConnexion }) => {
 
@@ -40,13 +40,13 @@ const LoginBox = ({ connexion, setConnexion }) => {
                 .then((responseData) => {
                     console.log(responseData);
                     if (responseData['token']) {
-                        localStorage.setItem('token', JSON.stringify(responseData['token']));
+                        localStorage.setItem('user', JSON.stringify(responseData['token']));
                         window.location.reload(false);
                     } else setLoginError(responseData)
-
-
                 })
-                .catch();
+                .catch(error => {
+                    console.log("something bad happened somewhere, rollback!");
+                });
         }
     });
 

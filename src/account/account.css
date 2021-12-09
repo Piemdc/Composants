@@ -159,29 +159,11 @@
   background-color: #00ac45b4;
   
 }
-.formOK, .formError{
 
-  position: absolute;
-  margin: 0;
-  right: 9%;
-  background: none!important;
-}
-
-.formOK, .formError{
-  display: none;
-
-}
 
 @media only screen and (min-width: 768px) 
 
 {
-  .formOK, .formError{
-    display: block;
-    position: absolute;
-    margin: 0;
-    right: 15%;
-    background: none!important;
-  }
 
   .avatarbox{
       width: 30%;
@@ -191,15 +173,10 @@
 
 @media only screen and (min-width: 1024px) 
 
-{
-  .formOK, .formError{
-    right: 10%;
-
-  
-  }
-  
+{  
   .account{
     background-size:cover;
+    background-attachment: fixed;
     background-position: center;
     flex-flow: row wrap;
     justify-content: space-between;

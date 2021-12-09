@@ -37,8 +37,6 @@ export default function Home() {
         fetch('http://localhost:8000/api/article', {
             headers: {
                 method: 'POST',
-                mode: 'cors',
-                "access-control-allow-origin": "*",
                 "Content-type": "application/json"
             },
         })
@@ -65,13 +63,13 @@ export default function Home() {
         return (
             < main className="home" >
                 <section class="rappel">
-                    <h1>Gépa 10d</h1>
+                    <h1>titre</h1>
                     <div className="coming">
                         <h3>Welcome back !</h3>
                         <p>utilisateurTest</p>
                         <p>EvenementTEST - <strong>Aujourd'hui</strong><img class="fusee" src={fusee} alt="#" /></p>
                         <p>EvenementTEST - <strong>4 jours</strong><img class="fusee" src={fusee} alt="#" /></p>
-                        <a href="#"> Mes evenements</a>
+                        <a href="/account"> Mes evenements</a>
                     </div>
                 </section>
 

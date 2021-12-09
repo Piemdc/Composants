@@ -7,11 +7,11 @@ export default function Need(props) {
     const [need, setNeed] = useState([]);
 
     useEffect(() => {
-        fetch(`https://piemdc.fr/api/need`, {
+        fetch(`http://localhost:8000/api/need`, {
             method: 'POST',
             mode: 'cors',
             headers: {
-                "access-control-allow-origin": "*",
+                "trol-allow-origin": "*",
                 "Content-type": "application/json; charset=UTF-8"
             },
             body: JSON.stringify({ event: + props.id })

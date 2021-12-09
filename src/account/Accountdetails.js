@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
-export default function Accountdetails() {
+export default function Accountdetails(props) {
 
 
     const [error, setError] = useState(null);
@@ -20,14 +20,14 @@ export default function Accountdetails() {
 
 
     useEffect(() => {
-        fetch(`https://piemdc.fr/api/account`, {
+        fetch(`http://localhost:8000/api/account`, {
             method: 'POST',
             mode: 'cors',
             headers: {
                 "access-control-allow-origin": "*",
                 "Content-type": "application/json; charset=UTF-8"
             },
-            body: JSON.stringify({ user: + localStorage.getItem("user") })
+            body: JSON.stringify({ username: props.username })
 
         })
             .then(response => response.json())
@@ -77,8 +77,8 @@ export default function Accountdetails() {
         onSubmit: values => {
 
 
-            switchModified();
-            fetch((`https://piemdc.fr/api/updateAccount/` + localStorage.getItem("user")), {
+
+            fetch((`http://localhost:8000/api/updateAccount/` + items.id), {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
@@ -92,7 +92,7 @@ export default function Accountdetails() {
                 .then(responseJson => {
 
                 })
-
+            switchModified();
         }
     })
 
@@ -139,8 +139,8 @@ export default function Accountdetails() {
                         <div className='labels'>
                             <label htmlFor="email">Adresse Mail :</label> <br />
                             <input id="email" type="email" {...formik.getFieldProps('email')} />
-                            {formik.touched.email && formik.errors.email ? <label className="formError">{formik.errors.email}</label> : null}
-                            {formik.touched.email && !formik.errors.email ? <label className="formOK">Email valide</label> : null}
+                            {formik.touched.email && formik.errors.email ? <span className="formError">{formik.errors.email}</span> : null}
+
                         </div>
                         {/* <input id="password" type="password" {...formik.getFieldProps('password')} />
                         {formik.touched.password && formik.errors.password ? <label className="formError">{formik.errors.password}</label> : null} */}

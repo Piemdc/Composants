@@ -57,22 +57,30 @@
 
   .formError{
     color: red;
-    font-weight: 600;
     font-style: italic;
     margin-top: 2%;
   }
 
   .formOK{
     color: green;
-    font-weight: 600;
     font-style: italic;
     margin-top: 2%;
   }
   
   .logButton > .fusee{
   transform: rotate(-90deg) scale(2);
-  margin: 2% 0;
-  
+  margin: 10% 0;
+  }
+
+  .backbutton{
+    background: none;
+    display: block;
+    border: none;
+    width: 20%;
+    margin: 0 auto;
+  }
+  .backbutton>.fusee{
+    width: 90%;
   }
   
   

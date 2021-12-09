@@ -12,10 +12,16 @@ function Header() {
 
     const { isAuthenticated } = useContext(Auth);
 
-    function mobileMenu(a) {
+    function mobileMenu() {
 
         setActive(!isActive)
 
+    }
+
+    function disconnect() {
+        localStorage.removeItem('user');
+        window.location.reload();
+        console.log('deco');
     }
     return (
         <header className="violetalien">
@@ -32,9 +38,9 @@ function Header() {
                     </>
                 )) || (
                         <>
-                            <li className="navlink" onClick={mobileMenu}><a href="#/account">Compte</a></li>
-                            <li className="navlink" onClick={mobileMenu}><a href="#">Participations</a></li>
-                            <li className="navlink" onClick={mobileMenu}><a href="#">Deconnexion</a></li>
+                            <li className="navlink" onClick={() => mobileMenu}><a href="#/account">Compte</a></li>
+                            <li className="navlink" onClick={() => mobileMenu}><a href="#">Participations</a></li>
+                            <li className="navlink" onClick={() => { mobileMenu(); disconnect(); }}><a href="#">Deconnexion</a></li>
                         </>
                     )}
             </ul>

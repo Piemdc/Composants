@@ -1,9 +1,15 @@
 .oneEvent{
     display: flex;
     width: 100%;
+    min-height: 100vh;
     flex-flow: column nowrap;
     align-items: center;
     justify-content: flex-start;
+    background-image: url(../images/event.jpg);
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-position:top;
+    background-size: 100%;
 }
 .oneEventTitle{
     display: flex;
@@ -34,7 +40,6 @@
 
 .oneEventDetails{
 
-    background-color: white;
     padding: 2% 5% 2% 5%;
     margin: 10%;
     width: 80%;
@@ -52,4 +57,88 @@
     font-size: 0.8em;
     line-height: 20px;
     width: 100%;
+}
+
+
+@media only screen and (min-width: 768px) 
+
+{
+
+  .avatarbox{
+      width: 30%;
+  }
+}
+
+
+@media only screen and (min-width: 1024px) 
+
+{  
+  
+}
+@media only screen and (min-width: 1440px) 
+
+{
+.oneEvent{
+
+    background-color: white;
+    background-position: center;
+    background-size: cover;
+    background-attachment:fixed;
+    flex-flow: row wrap;
+    align-items:stretch;
+}
+
+.oneEventTitle>button{
+    padding: 0.5%;
+    margin-top: 1%;
+    border-radius: 15px;
+    top: 40%;
+    left: 48%;
+}
+
+.oneEventTitle{
+    width: 100%;
+    padding: 2%;
+    
+}
+.oneEventTitle>img{
+    display: none;
+}
+.oneEventTitle>*{
+    color: white!important;
+}
+
+.oneEventTitle>h1{
+    font-size: 5em;
+    margin: 0;
+    font-weight: 100;
+}
+
+.oneEventTitle>p{
+    font-size: 3em;
+}
+
+.oneEventDetails{
+    width: 15%;
+    color: white;
+    font-size: 1.8em;
+    margin: 0 auto ;
+    background-color: rgba(0, 0, 0, 0.555);
+    text-align: center;
+}
+.needstockcontainer{
+    width: 100%;
+    display: flex;
+}
+
+
+}
+
+@media only screen and (min-width: 1900px) 
+
+{
+  
+ 
+  
+
 }

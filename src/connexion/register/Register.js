@@ -24,7 +24,7 @@ const RegisterBox = ({ connexion, setConnexion }) => {
         },
         validationSchema: Yup.object({
             email: Yup.string().email('Adresse mail invalide').required('* obligatoire'),
-            pseudo: Yup.string().required('* obligatoire'),
+            pseudo: Yup.string().required('* obligatoire').max(20, '20 caractères maximum'),
             nom: Yup.string(),
             prenom: Yup.string(),
             password: Yup.string()
@@ -94,9 +94,9 @@ const RegisterBox = ({ connexion, setConnexion }) => {
     else return (
         <div className="login">
             <h3>Bienvenue</h3>
-            <button type="submit" onClick={changeConnexion}>Acceder au site</button>
+            <button className="backbutton  " onClick={changeConnexion}><img className="fusee" src={fusee} alt="Button de retour" /></button>
 
-        </div>
+        </div >
     )
 };
 export default RegisterBox;

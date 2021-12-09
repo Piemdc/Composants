@@ -4,6 +4,7 @@ import Contact from './Contact';
 import Accountdetails from './Accountdetails';
 import EventThumbnail from './EventThumbnail';
 import { useHistory } from "react-router-dom";
+import jwt_decode from 'jwt-decode'
 
 
 export default function Account() {
@@ -36,16 +37,18 @@ export default function Account() {
         history.replace(path)
     }
 
-
+    let userdecode = jwt_decode(localStorage.getItem("user"));
+    console.log(userdecode);
 
     useEffect(() => {
-        fetch('https://piemdc.fr/api/eventlist/' + localStorage.getItem("user"), {
+        fetch('http://localhost:8000/api/eventlist', {
+            method: 'POST',
+            mode: 'cors',
             headers: {
-                method: 'POST',
-                mode: 'cors',
                 "access-control-allow-origin": "*",
                 "Content-type": "application/json"
             },
+            body: JSON.stringify({ username: userdecode.username })
         })
             .then(response => response.json())
             .then(
@@ -72,7 +75,7 @@ export default function Account() {
 
             <main className="account">
 
-                <Accountdetails />
+                <Accountdetails username={userdecode.username} />
 
                 <div className="contactbox" >
 

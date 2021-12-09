@@ -6,6 +6,7 @@ import fusee from '../images/fusee.svg'
 import EventThumbnail from '../account/EventThumbnail';
 import { useHistory } from "react-router-dom";
 import styles from './createevent.css'
+import jwt_decode from 'jwt-decode'
 
 
 
@@ -22,6 +23,7 @@ export default function CreateEvent() {
     const [isCreated, setCreated] = useState(null);
     const [newEvent, setnewEvent] = useState(['']);
 
+    let userdecode = jwt_decode(localStorage.getItem("user"));
 
     const formik = useFormik({
         initialValues: {
@@ -29,7 +31,7 @@ export default function CreateEvent() {
             adresse: '',
             icone: 1,
             date: new Date(),
-            creator: localStorage.getItem("user"),
+            creator: userdecode.username,
             // start_time: "20:00",
             // end_time: "22:20"
         },
@@ -52,7 +54,7 @@ export default function CreateEvent() {
 
         }),
         onSubmit: values => {
-            fetch(`https://piemdc.fr/api/newevent`, {
+            fetch(`http://localhost:8000/api/newevent`, {
                 method: 'POST',
                 mode: 'cors',
                 headers: {

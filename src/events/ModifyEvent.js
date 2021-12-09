@@ -53,11 +53,11 @@ export default function ModifyEvent({ event, setEvent, modifyEvent, setModifyEve
         onSubmit: values => {
 
             setModifyEvent(false);
-            fetch((`https://piemdc.fr/api/modifyevent/` + eventdetails['id']), {
+            fetch((`http://localhost:8000/api/modifyevent/` + eventdetails['id']), {
                 method: 'POST',
                 mode: 'cors',
                 headers: {
-                    "access-control-allow-origin": "*",
+                    "trol-allow-origin": "*",
                     "Content-type": "application/json"
                 },
                 body: JSON.stringify(values)

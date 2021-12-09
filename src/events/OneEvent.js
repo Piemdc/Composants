@@ -10,7 +10,7 @@ export default function OneEvent(props) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [event, setEvent] = useState([]);
-    const [isCreator, setIsCreator] = useState(false);
+    const [isCreator, setIsCreator] = useState(true);
     const [modifyEvent, setModifyEvent] = useState(false)
 
     function changeModifyEvent() {
@@ -29,11 +29,11 @@ export default function OneEvent(props) {
 
 
     useEffect(() => {
-        fetch(`https://piemdc.fr/api/event`, {
+        fetch(`http://localhost:8000/api/event`, {
             method: 'POST',
             mode: 'cors',
             headers: {
-                "access-control-allow-origin": "*",
+                "trol-allow-origin": "*",
                 "Content-type": "application/json; charset=UTF-8"
             },
             body: JSON.stringify({ event: + event_id })
@@ -53,6 +53,7 @@ export default function OneEvent(props) {
             )
     }, [modifyEvent])
 
+    console.log(event.creator_id);
 
     event.map((e) => {
         if (e.creator_id == localStorage.getItem("user") && isCreator === false) {
@@ -79,9 +80,9 @@ export default function OneEvent(props) {
                                     <img src={"/images/events/" + e.icone + "v.png"} />
                                     <h1>{e.nom}</h1>
                                     <p>{e.adresse}</p>
-                                </div>
-                                {isCreator === true ? <button type='button' className="modifyButton greenbutton" onClick={() => { changeModifyEvent() }}>Modifier</button> : null}
 
+                                    {isCreator === true ? <button type='button' className="modifyButton greenbutton" onClick={() => { changeModifyEvent() }}>Modifier</button> : null}
+                                </div>
                                 < div className="oneEventDetails" >
                                     <p>{e.details}
                                     </p>
@@ -91,8 +92,9 @@ export default function OneEvent(props) {
                     }))
 
                 }
-                <Need id={event_id} statut={'read'} />
-
+                <div className="needstockcontainer">
+                    <Need id={event_id} statut={'read'} />
+                </div>
 
 
 
